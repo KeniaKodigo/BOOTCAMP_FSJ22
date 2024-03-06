@@ -1,0 +1,33 @@
+/**
+
+selectores
+- etiqueta html (body, section, img...)
+
+- clase (.) (podes reutilizar)
+- id (#) (unico)
+ */
+
+.encabezado{
+    background-color: burlywood;
+}
+
+#nosotros{
+    background-color: cadetblue;
+}
+
+nav{
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.65);
+}
+
+/** alineando los elementos del nav */
+nav ul li{
+    display: inline-block; /** pone los li en linea (horizontal) */
+    list-style: none;
+    margin: 10px;
+}
+
+a{
+    text-decoration: none;
+}
+

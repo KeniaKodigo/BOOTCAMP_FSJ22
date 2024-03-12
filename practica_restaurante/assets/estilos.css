@@ -7,12 +7,20 @@ selectores
 - id (#) (unico)
  */
 
+/*
 .encabezado{
     background-color: burlywood;
 }
 
 #nosotros{
     background-color: cadetblue;
+}*/
+
+/** selector universal */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 nav{
@@ -31,3 +39,61 @@ a{
     text-decoration: none;
 }
 
+.encabezado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(./img/image1.jpg);
+    height: 600px;
+    width: 100%;
+    /** adaptamos el tamaño de la imagen al contenedor */
+    background-size: cover;
+    background-position: bottom;
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0% 100%);
+    flex-flow: column nowrap;
+}
+
+.titulo{
+    color: #FFF;
+    /** 
+        px
+        1rem (16px)
+     */
+    font-size: 4rem;
+    /** cambia el grosor de la fuente */
+    font-weight: bold;
+    letter-spacing: 0.7rem;
+    text-transform: uppercase;
+}
+
+.subtitulo{
+    color: #FFF;
+    font-size: 2rem;
+    letter-spacing: 0.7rem;
+    text-align: center;
+    font-weight: 400;
+}
+
+section{
+    /**
+        100px (arriba y abajo)
+        0 (a los lados)
+     */
+    padding: 100px 0;
+}
+
+.caja{
+    width: 80%;
+    margin: auto;
+}
+
+.nosotros{
+    display: flex;
+    justify-content: space-between;
+}
+
+img{
+    width: 100%;
+    height: 310px;
+    object-fit: cover;
+}

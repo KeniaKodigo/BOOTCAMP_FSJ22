@@ -90,10 +90,172 @@ section{
 .nosotros{
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
+    flex-flow: row wrap;
+}
+
+.contenido_imagen{
+    position: relative;
+    flex: 0 0 400px;
 }
 
 img{
     width: 100%;
     height: 310px;
     object-fit: cover;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.5);
+    transition: all .5s;
+}
+
+/** pseudo clases (hover) */
+img:hover{
+    transform: scale(1.1);
+}
+
+.contenido-nosotros{
+    flex: 0 0 50%;
+}
+
+h4{
+    text-transform: uppercase;
+    font-size: 1rem;
+    color: #444;
+    text-align: center;
+}
+
+h2{
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    color: #222;
+    text-align: center;
+}
+
+span{
+    color: #FF7B00;
+}
+
+#parrafo-nosotros{
+    line-height: 40px;
+    color: #666666;
+}
+
+/** apartado de ofertas */
+.ofertas{
+    position: relative;
+    background-image: url(./img/image3.jpg);
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+}
+
+.btn{
+    width: 170px;
+    padding: 10px 25px;
+    margin-top: 10px;
+    font-size: 1rem;
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-ofertas{
+    background-color: #FF7B00;
+    color: white;
+}
+
+.btn-ofertas:hover{
+    background-color: #a26e3e;
+}
+
+/** apartado del menu de hamburguesas */
+
+.menu-hamburguesa{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: row wrap;
+}
+
+.tarjeta{
+    width: 30%;
+    height: 300px;
+    margin-bottom: 30px;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+}
+
+/** nth-child */
+.tarjeta:nth-child(1){
+    background-image: url(./img/product1.jpg);
+}
+
+.tarjeta:nth-child(2){
+    background-image: url(./img/product2.jpg);
+}
+
+.tarjeta:nth-child(3){
+    background-image: url(./img/product3.jpg);
+}
+
+.tarjeta:nth-child(4){
+    background-image: url(./img/product4.jpg);
+}
+
+.tarjeta:nth-child(5){
+    background-image: url(./img/product5.jpg);
+}
+
+.tarjeta:nth-child(6){
+    background-image: url(./img/product6.jpg);
+}
+
+.tarjeta-contenido{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    opacity: 0;
+    transition: all .5s;
+}
+
+.tarjeta-contenido:hover{
+    opacity: 1;
+}
+
+h5{
+    font-size: 2rem;
+    color: #FF7B00;
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+.btn-tarjeta{
+    background-color: #AB561D;
+    color: white;
+}
+
+/** overlay -> clase css **/
+.overlay, .encabezado::before, .ofertas::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+}
+
+.encabezado *, .ofertas *{
+    position: relative;
 }

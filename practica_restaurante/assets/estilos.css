@@ -26,6 +26,10 @@ selectores
 nav{
     text-align: center;
     background-color: rgba(255, 255, 255, 0.65);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /** ajusta el indice del elemento para que este encima de los otros elementos (prioridad) */
 }
 
 /** alineando los elementos del nav */
@@ -33,10 +37,12 @@ nav ul li{
     display: inline-block; /** pone los li en linea (horizontal) */
     list-style: none;
     margin: 10px;
+    color: #AB561D;
 }
 
 a{
     text-decoration: none;
+    color: #AB561D;
 }
 
 .encabezado{
@@ -64,6 +70,7 @@ a{
     font-weight: bold;
     letter-spacing: 0.7rem;
     text-transform: uppercase;
+    text-align: center;
 }
 
 .subtitulo{
@@ -258,4 +265,55 @@ h5{
 
 .encabezado *, .ofertas *{
     position: relative;
+}
+
+.footer-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    gap: 20px;
+}
+
+/** uso de media query */
+/**
+    max-width
+    min-width
+*/
+
+/** pantallas pequenas, medianas */
+@media (max-width: 768px){
+    .contenido-nosotros{
+        order: 1;
+        flex: 0 0 100%;
+        margin: 50px 0;
+    }
+
+    .contenido_imagen{
+        order: 0;
+        flex: 0 0 100%;
+    }
+}
+
+/** media query para pantallas pequenas */
+@media (max-width: 576px){
+    .titulo{
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .footer-grid{
+        grid-template-columns: 1fr;
+        gap: 0px;
+    }
+
+    .tarjeta{
+        width: 100%;
+    }
+}
+
+/** media para solo pantallas medianas (tablet) */
+@media (min-width: 768px) and (max-width: 992px){
+    .tarjeta{
+        width: 45%;
+    }
 }

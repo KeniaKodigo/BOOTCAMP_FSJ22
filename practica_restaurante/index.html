@@ -19,15 +19,21 @@
 <body>
     <nav>
         <ul>
-            <li>Home</li>
-            <li>Nosotros</li>
-            <li>Menu</li>
+            <li>
+                <a href="#home">Home</a>
+            </li>
+            <li>
+                <a href="#seccion-nosotros">Nosotros</a>
+            </li>
+            <li>
+                <a href="#menu">Menu</a>
+            </li>
             <li>
                 <a href="#">Contacto</a>
             </li>
         </ul>
     </nav>
-    <section class="encabezado">
+    <section class="encabezado" id="home">
         <h1 class="titulo">RESTAURANTE</h1>
         <p class="subtitulo">Experiencia a la mejor comida</p>
     </section>
@@ -55,7 +61,7 @@
     <section class="caja">
         <h2>Nuestro menu</h2>
         <!-- tarjetas para el contenido de las hamburguesas  -->
-        <div class="menu-hamburguesa">
+        <div class="menu-hamburguesa" id="menu">
             <article class="tarjeta">
                 <div class="tarjeta-contenido">
                     <h5>Basica</h5>
@@ -102,7 +108,7 @@
 
     <!-- pie de pagina -->
     <footer>
-        <div>
+        <div class="footer-grid caja">
             <article>
                 <h5>Kenia Paiz</h5>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing.</p>

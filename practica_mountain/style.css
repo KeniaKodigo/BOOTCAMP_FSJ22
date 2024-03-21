@@ -1,0 +1,13 @@
+.banner{
+    background-image: url('https://res.cloudinary.com/dmddi5ncx/image/upload/v1710868812/practicas/site_montain/shutterstock_116403520_e3nbz8.jpg');
+    height: 400px;
+    background-size: cover;
+    background-position: center -100px;
+}
+
+@media(max-width: 576px){
+    .banner{
+        height: 150px;
+        background-position: center -50px;
+    }
+}

@@ -52,7 +52,7 @@ function verificarFormaPago(forma_pago){
 
 /** bucles */
 
-//for, while, do while (numeros, cadenas, arreglos)
+//for, while, do while (numeros, cadenas, arreglos) , foreach(arreglos)
 // for(let contador = 1; contador <= 10; contador++){
 //     document.write(contador + "<br>");
 // }
@@ -66,3 +66,25 @@ let cadena = "Hola Mundo!";
 for(let contador2 = cadena.length - 1; contador2 >= 0; contador2--){
     document.write(cadena[contador2] + "<br>");
 }
+
+
+let contador3 = 0;
+while(contador3 < cadena.length){
+    //proceso
+    console.log(cadena[contador3]);
+
+    contador3++;
+}
+
+//do while siempre se cumple la primera vez
+let contador4 = 0;
+do{
+    console.log(cadena[contador4]);
+    contador4++;
+}while(contador4 < cadena.length)
+
+let arreglo = [1,2,3,4,5];
+
+arreglo.forEach(numero => {
+    console.log(numero)
+})

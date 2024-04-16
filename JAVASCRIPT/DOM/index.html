@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="titulo" class="titulo" name="name_titulo">EXPLICANDO EL DOM</h1>
+    <p class="parrafo">1</p>
+    <p class="parrafo">2</p>
+    <p class="parrafo">3</p>
+
+    <h2>Lista de categorias</h2>
+
+    <ul id="lista">
+        
+    </ul>
+    <h3>Utilizando el evento onClick</h3>
+    <button class="boton1" onclick="verificarClick()">Click</button>
+
+    <h3>Utilizando el evento onSubmit</h3>
+    <form action="" onsubmit="capturarNombre()">
+        <input type="text" id="nombre" name="" placeholder="Ingresa tu nombre">
+        <input type="submit" value="guardar">
+    </form>
+
+    <h3>Utilizando el evento onChange</h3>
+    <select onchange="obtenerLugarTuristico()">
+        <option value="El Pital">El Pital</option>
+        <option value="Ruta de las flores">Ruta de las flores</option>
+        <option value="La PLaya">La PLaya</option>
+    </select>
+</body>
+<script src="./index.js"></script>
+</html>

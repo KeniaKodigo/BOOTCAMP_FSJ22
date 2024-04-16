@@ -88,3 +88,8 @@ let arreglo = [1,2,3,4,5];
 arreglo.forEach(numero => {
     console.log(numero)
 })
+
+let frutas = ['🍎', '🍐', '🍌'];
+frutas.forEach(function(fruta) {
+    console.log(fruta);
+});

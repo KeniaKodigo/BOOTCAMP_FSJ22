@@ -25,29 +25,58 @@
 <script>
     function calcularCostoLlamada(){
         //llamando al select
-        let zona = document.getElementById('zonas');
+        let zona = document.getElementById('zonas').value;
         //llamando al input
         let minutos = document.querySelector('#minutos').value;
+        let total = 0;
 
         console.log(zona);
         console.log(minutos);
+        /***
+         * parseInt() => convierte el valor a dato entero
+         * parseFloat() => convierte el valor a dato decimal
+         * Number() => convierte el valor a dato numerico (int, float)
+         */
 
-        switch(zona.value){
+        let numero = "34";
+        Number(numero); //34 (float/double)
+
+        switch(zona){
             case "12":
-                alert('Precio por minuto es de $2.00');
+                if(minutos <= 30){
+                    total = ((minutos * 2) * 0.90); //41.4
+                }else{
+                    total = minutos * 2;
+                }
                 break;
             case "15":
-                alert('Precio por minuto es de $2.20');
+                if(minutos <= 30){
+                    total = ((minutos * 2.20) * 0.90); //41.4
+                }else{
+                    total = minutos * 2.20;
+                }
                 break;
             case "18":
-                alert('Precio por minuto es de $4.50');
+                if(minutos <= 30){
+                    total = ((minutos * 4.50) * 0.90); //41.4
+                }else{
+                    total = minutos * 4.50;
+                }
+                
                 break;
             case "19":
-                alert('Precio por minuto es de $3.50');
+                if(minutos <= 30){
+                    total = ((minutos * 3.50) * 0.90); //41.4
+                }else{
+                    total = minutos * 3.50;
+                }
+                
                 break;
             default:
                 alert('Ingresa la zona correcta');
         }
+
+        document.write(`El costo de la llamada fue $${total}`);
     }
 </script>
 </html>

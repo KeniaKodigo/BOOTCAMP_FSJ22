@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="">Ingresa 5 numeros</label>
+    <input type="text" id="secuencia">
+
+    <button onclick="verificar()">Verificar</button>
+</body>
+<script>
+    function verificar(){
+        let secuencia = document.getElementById('secuencia').value;
+        console.log(secuencia); //"15,20,34,45" -> [15,20,5,23,10]
+
+        let arreglo_secuencia = secuencia.split(","); //[15,20,34,45];
+        console.log(arreglo_secuencia);
+
+        let contador_multiple = 0;
+
+        for(let i=0; i < arreglo_secuencia.length; i++){
+            if(Number(arreglo_secuencia[i]) % 15 === 0){
+                contador_multiple++;
+            }
+        }
+
+        alert(`Total de numeros multiples de 15: ${contador_multiple}`);
+    }
+</script>
+</html>

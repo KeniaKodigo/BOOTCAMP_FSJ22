@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="">Ingresa 1 numero</label>
+    <input type="text" class="secuencia">
+
+    <label for="">Ingresa 1 numero</label>
+    <input type="text" class="secuencia">
+
+    <label for="">Ingresa 1 numero</label>
+    <input type="text" class="secuencia">
+
+    <label for="">Ingresa 1 numero</label>
+    <input type="text" class="secuencia">
+
+    <button onclick="verificar()">Verificar</button>
+</body>
+<script>
+    function verificar(){
+        let lista_secuencia = document.querySelectorAll('.secuencia');
+        console.log(lista_secuencia);
+        let contador_multiple = 0;
+
+        lista_secuencia.forEach((numero) => {
+            //console.log(numero.value);
+            if(numero.value % 15 === 0){
+                contador_multiple++;
+            }
+        })
+
+        alert(`Total de numeros multiples de 15: ${contador_multiple}`);
+        /*let contador_multiple = 0;
+
+        for(let i=0; i < arreglo_secuencia.length; i++){
+            if(Number(arreglo_secuencia[i]) % 15 === 0){
+                contador_multiple++;
+            }
+        }
+
+        */
+    }
+</script>
+</html>

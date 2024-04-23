@@ -15,6 +15,9 @@ function cargarEventos(){
 
     //llamar funcion agregarCurso, el evento estara atento en contenedor main
     listadoCursos.addEventListener('click', agregarCurso);
+
+    //llamamos al evento de escucha para que este atento al contenedor de la tabla del carrito de compra
+    carrito.addEventListener('click', eliminarCurso);
 }
 
 function agregarCurso(e){
@@ -73,10 +76,13 @@ function carritoHTML(){
     // for(let i=0; i < arregloCarrito.length; i++){
 
     // }
-
-    //map()
+    //ejecutamos la funcion para eliminar los duplicados de los cursos
+    limpiarCarritoBody(bodyCarrito);
+    let total = 0;
     arregloCarrito.map(curso => {
         
+        let formatear_precio = parseInt(curso.precio.slice(1));
+        console.log(formatear_precio);
         //tr => creamos una fila
         const fila = document.createElement('tr');
         fila.innerHTML = `
@@ -89,9 +95,71 @@ function carritoHTML(){
                 <a href="#" class="borra-curso" data-id=${curso.id}>Eliminar<a>
             </td>
         `;
-
         bodyCarrito.appendChild(fila);
+
+        total += formatear_precio;
     })
+
+    limpiarCarritoBody(footerCarrito);
+    const fila_total_foot = document.createElement('tr');
+    fila_total_foot.innerHTML = `
+            <td colspan="3">Total a pagar</td>
+            <td>$${total}</td>
+    `;
+    footerCarrito.appendChild(fila_total_foot)
 }
 
+//funcion para eliminar los hijos duplicados del (tbody) y (tfoot)
+function limpiarCarritoBody(contenedor){
+    while(contenedor.firstChild){
+        contenedor.removeChild(contenedor.firstChild);
+    }
+}
 
+// function limpiarCarritoFoot(){
+//     while(footerCarrito.firstChild){
+//         footerCarrito.removeChild(footerCarrito.firstChild);
+//     }
+// }
+
+
+//metodo para eliminar un curso por su Id
+function eliminarCurso(e){
+    if(e.target.classList.contains('borra-curso')){
+        //imprimir el id 
+        const cursoId = e.target.getAttribute('data-id');
+
+        //obtenemos la etiqueta que contenga el data-id seleccionado por el usuario
+        const habilitarBoton = document.querySelector(`.button-carrito[data-id="${cursoId}"]`);
+
+        //console.log(habilitarBoton);
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                arregloCarrito = arregloCarrito.filter(curso => curso.id !== cursoId);
+
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                });
+
+                if(habilitarBoton){
+                    //si el boton existe se remueve la clase disabled del boton
+                    habilitarBoton.classList.remove('disabled');
+                }
+
+                carritoHTML();
+            }
+        });
+        
+    }
+}

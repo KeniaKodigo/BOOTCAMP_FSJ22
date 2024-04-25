@@ -18,6 +18,41 @@ function cargarEventos(){
 
     //llamamos al evento de escucha para que este atento al contenedor de la tabla del carrito de compra
     carrito.addEventListener('click', eliminarCurso);
+
+    //evento para vaciar todo el carrito
+    vaciarCarrito.addEventListener('click', () => {
+        //logica
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                arregloCarrito = []; //reseteamos el arreglo
+                carritoHTML();
+                // limpiarCarritoBody(bodyCarrito);
+                // limpiarCarritoBody(footerCarrito);
+
+                //validar que todos los botones de los cursos esten habilitados
+                const botonesCarrito = document.querySelectorAll('.button-carrito'); //lista ([])
+
+                botonesCarrito.forEach(boton => {
+                    boton.classList.remove('disabled');
+                });
+
+                console.log(arregloCarrito);
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                });
+            }
+        });
+    })
 }
 
 function agregarCurso(e){
@@ -162,4 +197,26 @@ function eliminarCurso(e){
         });
         
     }
+}
+
+function guardarPedido(){
+    Swal.fire({
+        title: "Do you want to save the changes?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Save",
+        denyButtonText: `Don't save`
+    }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            Swal.fire("Saved!", "", "success").then(function(){
+                //redireccionamos a una pagina en especifico
+                window.location = "index.html";
+            })
+
+        } else if (result.isDenied) {
+            Swal.fire("Changes are not saved", "", "info");
+        }
+    });
+
 }

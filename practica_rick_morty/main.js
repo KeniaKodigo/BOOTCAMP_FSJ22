@@ -23,6 +23,14 @@
 
 const seccion = document.querySelector('#seccion-personajes');
 
+let nextPage;
+let prevPage;
+
+let page = 'https://rickandmortyapi.com/api/character/';
+
+
+
+
 //funcion para validar con emoji el estado del personaje
 const verificarEmoji = (status) => {
     switch(status) {
@@ -38,13 +46,23 @@ const verificarEmoji = (status) => {
 }
 
 //funcion va trabajar en segundo plano (asincrona)
-const getPersonajes = async () => {
+const getPersonajes = async (page) => {
 
     //try - catch(manejo de error)
     try{
-        const response = await fetch('https://rickandmortyapi.com/api/character/');
+        const response = await fetch(page);
         //la informacion de los personajes lo mandamos en formato json
         const datos_personajes = await response.json();
+
+        //console.log(datos_personajes.info.prev);
+        //Accedemos al objeto info (de la api)para acceder a las propiedades next y prev
+        nextPage = datos_personajes.info.next;
+        prevPage = datos_personajes.info.prev;
+        if(prevPage == null){
+            document.getElementById('buttonAnterior').classList.add('disabled')
+        }else{
+            document.getElementById('buttonAnterior').classList.remove('disabled')
+        }
 
         console.log(datos_personajes.results);
         //Guardamos el arreglo de personajes en una variable
@@ -85,4 +103,21 @@ const getPersonajes = async () => {
     }
 }
 
-getPersonajes();
+
+const cargarPersonajesAnterior = () => {
+    console.log(prevPage);
+    seccion.innerHTML = '';
+    getPersonajes(prevPage);
+
+}
+
+
+const cargarPersonajesSiguiente = () => {
+    seccion.innerHTML = '';
+    getPersonajes(nextPage);
+}
+
+getPersonajes(page);
+
+
+

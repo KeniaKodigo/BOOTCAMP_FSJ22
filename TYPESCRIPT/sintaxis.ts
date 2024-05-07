@@ -40,6 +40,7 @@ for(let i = 0; i < tupla.length; i++){
         console.log("Encontre a juan");
     }
 }
+//foreach, map, filter...
 
 console.table(tupla)
 

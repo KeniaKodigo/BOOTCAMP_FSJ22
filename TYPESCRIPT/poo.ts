@@ -44,7 +44,7 @@ class Vehiculo{
     }
 
     encender() :string{
-        return "Estoy enciendo el vehiculo";
+        return "Estoy enciendo el vehiculo" + this.marca;
     }
 
     apagar() :string{
@@ -74,3 +74,10 @@ let vehiculo2 = new Vehiculo("jsj","jkjkd","ksks",2013);
 // console.log(vehiculo2.acelerar());
 // console.log(vehiculo2);
 
+//PILARES DE POO
+/**
+ * Herencia
+ * Polimorfismo
+ * Encapsulamiento
+ * Abstraccion
+ */

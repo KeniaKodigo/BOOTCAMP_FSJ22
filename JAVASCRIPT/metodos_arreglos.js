@@ -80,6 +80,8 @@ function encontrarPersonas(){
         { nombre: 'Pedro', edad: 35 }
     ];
 
+    //SELECT 
+
     //[10,20,23]
     //filter
     //Devolver en un nuevo arreglo las personas que soy mayores de 20 anios

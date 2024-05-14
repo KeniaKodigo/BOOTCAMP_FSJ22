@@ -1,5 +1,4 @@
-//clase padre
-class Productos{
+abstract class Product{
     protected nombre:string
     protected descripcion:string
     protected categoria:string
@@ -24,13 +23,16 @@ class Productos{
         return this.stock;
     }
 
-    imprimirDetalle(){
-        console.log(`Detalle del producto\nNombre: ${this.nombre}\nDescripcion: ${this.descripcion}\nCategoria: ${this.categoria}\nPrecio: $${this.precio}`);
-    }
+    /**
+     * Metodo abstracto que el comportamiento se lo asigna la clase hija
+     */
+    abstract imprimirDetalle() :void;
+
+    abstract calcularDescuento() :void;
 }
 
-//Clases hijas
-class Insumos extends Productos{
+
+class Biberes extends Product{
     protected fecha_vencimiento:string
     protected lote:string
 
@@ -41,14 +43,23 @@ class Insumos extends Productos{
         this.fecha_vencimiento = vencimiento;
         this.lote = lote;
     }
-    
-    //heredamos el metodo y cambiamos su comportamiento
-    imprimirDetalle(){
+
+    imprimirDetalle(): void {
+        //le asignamos un comportamiento
         console.log(`Detalle del producto\nNombre: ${this.nombre}\nDescripcion: ${this.descripcion}\nCategoria: ${this.categoria}\nPrecio: $${this.precio}\nFecha de vencimiento: ${this.fecha_vencimiento}\nLote: ${this.lote}\n`);
+    }
+
+    calcularDescuento(): void {
+        let descuento = 0;
+        let precio_descuento = 0;
+        
+        descuento = this.precio * 0.10;
+        precio_descuento = this.precio - descuento;
+        console.log(`El precio del producto ${this.nombre} es $${this.precio} y con descuento quedo en $${precio_descuento}`);
     }
 }
 
-class Electrodomesticos extends Productos{
+class ProductsDomesticos extends Product{
     protected marca:string
 
 
@@ -58,22 +69,21 @@ class Electrodomesticos extends Productos{
         //asignamos los atributos faltantes
         this.marca = marca;
     }
-    
-    //heredamos el metodo y cambiamos su comportamiento
-    imprimirDetalle(){
+
+    imprimirDetalle(): void {
+        //le asignamos un comportamiento
         console.log(`Detalle del producto\nNombre: ${this.nombre}\nDescripcion: ${this.descripcion}\nCategoria: ${this.categoria}\nPrecio: $${this.precio}\nMarca: ${this.marca}\n`);
+    }
+
+    calcularDescuento(): void {
+        let descuento = 0;
+        let precio_descuento = 0;
+        
+        descuento = this.precio * 0.20;
+        precio_descuento = this.precio - descuento;
+        console.log(`El precio del producto ${this.nombre} es $${this.precio} y con descuento quedo en $${precio_descuento}`);
     }
 }
 
-let azucar = new Insumos("Azucar", "azucar morena de 5 libras","insumos",5,"12-07-2025","prueba lote");
-azucar.imprimirDetalle();
-azucar.setstock(10);
-console.log(azucar.getstock());
-
-
-let licuadora = new Electrodomesticos("Licuadora","Color gris y negro","electrodomesticos",150,"Ninja");
-licuadora.imprimirDetalle();
-
-let product = new Productos("computadora asus","color azul y 8gb de ram","tecnologia",1400)
-product.imprimirDetalle();
-
+// //instanciar
+// let objeto1 = new Product("computadora asus","color azul y 8gb de ram","tecnologia",1400);

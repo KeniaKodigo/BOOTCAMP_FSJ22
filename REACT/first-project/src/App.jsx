@@ -1,6 +1,8 @@
 import './App.css'
 import FirstComponent from './components/FirstComponent'
-
+/*
+  En este proyecto se observa la creacion de componentes, el uso de el Hook useState, utilizacion de props para enviar informacion y manejo del Estado
+*/
 function App(){
 
   return (

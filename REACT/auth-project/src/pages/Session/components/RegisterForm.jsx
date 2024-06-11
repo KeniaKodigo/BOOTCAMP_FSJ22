@@ -1,30 +1,48 @@
 import {useForm} from 'react-hook-form';
+import * as yup from 'yup';
+import {yupResolver} from '@hookform/resolvers/yup'
+
+const schema = yup.object().shape({
+    email: yup.string().email('Correo no valido. Ejemplo nombre@correo.com').required('El correo es obligatorio'),
+    password: yup.string().min(8,'La contraseña debe tener al menos 8 caracteres').required('El password es obligatorio'),
+    confirmPassword: yup.string().oneOf([yup.ref('password'),null],'Las contraseñas deben coincidir').required('La confirmacion de contraseña es obligatoria')
+})
+
 
 export const RegisterForm = () => {
-    const {register,watch} = useForm()
+    const {register,handleSubmit,formState:{errors}} = useForm({
+        resolver: yupResolver(schema)
+    })
 
     //console.log(watch("email"));
-    console.log(watch("password"));
- 
+    //console.log(watch("password"));
+    
+    const onSubmitForm = data => {
+            console.log(data);
+            console.log(data.email);
+        }
 
     return (
     <div>
-        <form>
+        <form onSubmit={handleSubmit(onSubmitForm)}>
             <section>
                 <label htmlFor="email">Email</label>
                 <input id='email' type="email" placeholder="Ingresa tu email" {...register('email')}/>
+
+                {errors.email && <p>{errors.email.message}</p>}
             </section>
             <section>
                 <label>Password</label>
-                <input type="password" placeholder="Ingresa tu contrasenia" {...register('password')} />
+                <input id="password" type="password" placeholder="Ingresa tu contrasenia" {...register('password')} />
+                {errors.password && <p>{errors.password.message}</p>}
             </section>
             <section>
                 <label>Confirm Password</label>
-                <input type="password" placeholder="Ingrese nuevamente su contrasenia" {...register('confirmPassword')}/>
+                <input id="confirmPassword" type="password" placeholder="Ingrese nuevamente su contrasenia" {...register('confirmPassword')}/>
+                {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
             </section>
             <button type="submit">Registrarse</button>
         </form>
-
     </div>
   )
 }

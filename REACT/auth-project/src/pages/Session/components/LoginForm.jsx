@@ -1,6 +1,8 @@
 import {useForm} from 'react-hook-form';
 import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup'
+import { auth } from '../../../firebase/config';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const schema = yup.object().shape({
     email: yup.string().email('Correo no valido. Ejemplo nombre@correo.com').required('El correo es obligatorio'),
@@ -14,6 +16,17 @@ export const LoginForm = () => {
     
     const onSubmitForm = data => {
         console.log(data);
+        signInWithEmailAndPassword(auth, data.email, data.password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    console.log(user);
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+  });
     }
 
 return (

@@ -3,6 +3,10 @@ import * as yup from 'yup';
 import {yupResolver} from '@hookform/resolvers/yup'
 import { auth } from '../../../firebase/config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useContext } from 'react';
+import { UserContext } from '../../../context/UserDataContext';
+import { useNavigate } from 'react-router';
+
 
 const schema = yup.object().shape({
     email: yup.string().email('Correo no valido. Ejemplo nombre@correo.com').required('El correo es obligatorio'),
@@ -13,6 +17,10 @@ export const LoginForm = () => {
     const {register,handleSubmit,formState:{errors}} = useForm({
         resolver: yupResolver(schema)
     })
+
+    const navigate = useNavigate();
+
+    const {data,setData} = useContext(UserContext)
     
     const onSubmitForm = data => {
         console.log(data);
@@ -21,7 +29,11 @@ export const LoginForm = () => {
     // Signed in 
     const user = userCredential.user;
     console.log(user);
-    // ...
+
+    //Guardamos el usuario en el contexto
+    setData(user);
+    //Redireccionamos al Home
+    navigate('/')
   })
   .catch((error) => {
     const errorCode = error.code;

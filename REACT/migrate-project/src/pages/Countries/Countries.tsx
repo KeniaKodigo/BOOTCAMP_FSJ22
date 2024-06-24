@@ -1,7 +1,11 @@
 import { useState } from "react"
+import { useCountriesData } from "../../hooks/useCountriesData"
+import { ListCountries } from "./components/ListCountries";
 
 export const Countries = () => {
     const [region,setRegion] = useState<string>("")
+    
+    const countries = useCountriesData(region);
 
   return (
     <div className="container">
@@ -17,6 +21,15 @@ export const Countries = () => {
         <option value="Oceania">Oceania</option>
     </select>
     </label>
+
+    <div className="container-fluid">
+    { //Renderizado condicional
+    countries.length > 1 ?    
+        <ListCountries countries={countries}/>
+    : 
+    <h1 className="text-white">Loading</h1>
+    }
+    </div>
     </div>
   )
 }

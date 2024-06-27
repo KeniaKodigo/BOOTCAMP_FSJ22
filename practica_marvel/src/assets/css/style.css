@@ -1,0 +1,23 @@
+header{
+    background-image: url('https://res.cloudinary.com/dmddi5ncx/image/upload/v1719432276/practicas/marvel/last-movies_bgbmiz.jpg');
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+nav{
+    text-align: center;
+    padding-top: 60px;
+}
+
+nav ul li{
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 20px;
+}
+
+.link{
+    color: #fff;
+    text-decoration: none;
+}

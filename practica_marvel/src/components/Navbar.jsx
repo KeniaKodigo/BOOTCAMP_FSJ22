@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Comics from './Comics'
 import Bienvenida from './Bienvenida'
 import Error404 from './Error404'
+import BuscarPersonaje from './BuscarPersonaje'
 
 export default function Navbar() {
     return (
@@ -11,10 +12,10 @@ export default function Navbar() {
                 <nav>
                     <ul>
                         <li>
-                            <Link to="/">Home</Link>
+                            <Link to="/" className='link'>Home</Link>
                         </li>
                         <li>
-                            <Link to="/comics">Comics</Link>
+                            <Link to="/comics" className='link'>Comics</Link>
                         </li>
                     </ul>
                 </nav>
@@ -24,6 +25,7 @@ export default function Navbar() {
                 <Route path='/' element={<Bienvenida />}/>
                 <Route path='/comics' element={<Comics />}/>
                 <Route path='*' element={<Error404 />}/>
+                <Route path='/busqueda' element={<BuscarPersonaje />}/>
             </Routes>
         </BrowserRouter>
         
